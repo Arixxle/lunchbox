@@ -1,23 +1,21 @@
 <h1>Sign up</h1>
 
-<%= form_for(User.new, url: '/sign_up', method: 'post') do %>
+<%= form_for(User.new, url: '/sign_up', method: 'post') do |f| %>
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :password, "密碼：" %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label :password_comfirm, "密碼確認：" %>
+    <%= f.password_field :password_confirm %>
+  </div>
+  <div>
+  <%= f.submit "註冊" %>
+  </div>
 <% end %>
 
-<!-- 
-<form action="/sign_up" method="POST">
-  <div>
-      email:
-    <input type="text" name="email">
-  </div>
-  <div>
-    password:
-    <input type="text" name="password">
-  </div>
-  <div>
-    password confirm:
-    <input type="text" name="passwordconfirm">
-  </div>
-  <div>
-    <input type="submit" value="註冊">
-  </div>
-</form> -->
+
