@@ -1,5 +1,19 @@
 class UsersController < ApplicationController
   def login
+    @user = User.new
+  end
+  def sign_in
+    #查資料庫是否有此使用者
+    user = User.find_by(email: user_params[:email],
+                        password: user_params[:password])
+    # 上面這段會拿輸入的mail password 去資料庫查找，有的話就會把資料庫資料放到user
+    if user
+      session[:ccc9527] = user.email
+      #如果有，就把使用者資料email存到session(登入)
+      redirect_to root_path
+    else
+      redirect_to login_path
+    end
   end
   def logout
     session[:ccc9527] = nil
