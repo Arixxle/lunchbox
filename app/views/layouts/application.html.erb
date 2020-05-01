@@ -10,6 +10,15 @@
   </head>
 
   <body>
+
+    <% if session[:ccc9527] %>
+      <%= session[:ccc9527]%> | 
+      <%= link_to "登出", logout_path, method: 'delete' %>
+    <% else %>
+      <a href="#">註冊</a>
+      <a href="#">登入</a>
+    <% end %>
+    <!--上面的session在index印不出來，其他頁面卻是正常？？-->
     <%= yield %>
   </body>
 </html>
