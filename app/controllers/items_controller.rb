@@ -12,7 +12,11 @@ class ItemsController < ApplicationController
     else
      render :new
     end
-
+  end
+  def destroy
+    item = Item.find(params[:id]) #這個params[:id]會從網址抓到該item的id
+    item.destroy
+    redirect_to items_path, notice: "餐點已刪除！"
   end
 
   private
