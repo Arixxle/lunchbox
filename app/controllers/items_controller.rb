@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   def index
     @items = Item.all
   end
@@ -13,6 +16,9 @@ class ItemsController < ApplicationController
      render :new
     end
   end
+  def show
+    @item = Item.find(params[:id])
+  end
   def destroy
     item = Item.find(params[:id]) #這個params[:id]會從網址抓到該item的id
     item.destroy
@@ -25,5 +31,11 @@ class ItemsController < ApplicationController
                                  :price,
                                  :description,
                                  :spec)
+  end
+
+  def record_not_found
+    render file: 'public/404.html', #連入檔案
+    status: 404, #給瀏覽器看的狀態
+    layout: false #不要使用公共layout
   end
 end
