@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+before_action :find_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all
@@ -17,11 +16,22 @@ class ItemsController < ApplicationController
     end
   end
   def show
-    @item = Item.find(params[:id])
+    
+  end
+  def edit
+    
+  end
+  def update
+    
+    if @item.update(item_params)
+      redirect_to items_path, notice: "餐點更新成功！"
+    else
+      render :edit
+    end
+
   end
   def destroy
-    item = Item.find(params[:id]) #這個params[:id]會從網址抓到該item的id
-    item.destroy
+    @item.destroy
     redirect_to items_path, notice: "餐點已刪除！"
   end
 
@@ -32,10 +42,8 @@ class ItemsController < ApplicationController
                                  :description,
                                  :spec)
   end
-
-  def record_not_found
-    render file: 'public/404.html', #連入檔案
-    status: 404, #給瀏覽器看的狀態
-    layout: false #不要使用公共layout
+  def find_item
+    @item = Item.find(params[:id])
   end
+
 end

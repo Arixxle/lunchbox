@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   # get '/', to: "welcome#index" 
   root "welcome#index"
   #users
