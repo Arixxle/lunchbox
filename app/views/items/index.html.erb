@@ -1,0 +1,7 @@
+<h1>餐點列表</h1>
+<%= link_to "新增", new_item_path %>
+<ul>
+  <% @items.each do |item|%>
+  <li><%= item.name %></li>
+  <% end %>
+</ul>
