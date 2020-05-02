@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
 before_action :find_item, only: [:show, :edit, :update, :destroy]
 
-
   def index
     @items = Item.all
   end
@@ -23,16 +22,15 @@ before_action :find_item, only: [:show, :edit, :update, :destroy]
     
   end
   def update
-    
     if @item.update(item_params)
       redirect_to items_path, notice: "餐點更新成功！"
     else
       render :edit
     end
-
   end
   def destroy
     @item.destroy
+    # @item.update(deleted_at: Time.now)
     redirect_to items_path, notice: "餐點已刪除！"
   end
 
