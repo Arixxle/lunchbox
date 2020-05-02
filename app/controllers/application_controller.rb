@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   before_action :check_login
-
+  helper_method :current_user
   private
   def record_not_found
     render file: 'public/404.html', #連入檔案
