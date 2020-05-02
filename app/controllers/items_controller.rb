@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 before_action :find_item, only: [:show, :edit, :update, :destroy]
 
+
   def index
     @items = Item.all
   end
@@ -41,6 +42,7 @@ before_action :find_item, only: [:show, :edit, :update, :destroy]
                                  :price,
                                  :category_id,
                                  :description,
+                                 :cover,
                                  :spec)
   end
   def find_item
