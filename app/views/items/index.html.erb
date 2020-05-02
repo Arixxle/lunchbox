@@ -5,12 +5,21 @@
   <div class="row">
     <% @items.each do |item|%>
     <div class="col-12 col-md-4">
-      <%= image_tag item.cover.variant(resize_to_limit: [300, 300]) if item.cover.attached? %>
-      <%= link_to item.name, item_path(item.id) %>
-      <%= item.category.name %>
-      <%= link_to "編輯", edit_item_path(item.id) %>
-      <%= link_to "刪除", item_path(item.id), method: "delete", 
-                                             data: { confirm: "確定要刪除餐點？？"} %>
+      <div class="card">
+          <%= image_tag item.cover.variant(resize_to_limit: [300, 300]) if item.cover.attached? %>
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to item.name, item_path(item.id) %></h5>
+          <p class="card-text"><%= item.category.name %></p>
+          <%= link_to "編輯", edit_item_path(item.id), class: 'btn btn-info' %>
+          <%= link_to "刪除", item_path(item.id), class: 'btn btn-danger', 
+                                                  method: "delete", 
+                                                  data: { confirm: "確定要刪除餐點？？"} %>
+        </div>
+      </div>
+      
+      
+      
+
     </div>
     <% end %>
   </div>
