@@ -31,7 +31,7 @@ before_action :find_item, only: [:show, :edit, :update, :destroy]
   def destroy
     @item.destroy
     # @item.update(deleted_at: Time.now)
-    redirect_to items_path, notice: "餐點已刪除！"
+    redirect_to items_path, alert: "餐點已刪除！"
   end
 
   private
