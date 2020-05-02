@@ -39,6 +39,7 @@ before_action :find_item, only: [:show, :edit, :update, :destroy]
   def item_params
     params.require(:item).permit(:name,
                                  :price,
+                                 :category_id,
                                  :description,
                                  :spec)
   end

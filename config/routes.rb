@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :categories
   # get '/', to: "welcome#index" 
-  root "welcome#index"
+  # root "welcome#index"
+  root "items#index"
   #users
   get '/login', to: "users#login"
   post '/login', to: "users#sign_in"
