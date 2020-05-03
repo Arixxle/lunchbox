@@ -17,6 +17,10 @@ class Cart
     @items #回傳購物車的陣列內容
   end
   def total
-    @items.reduce(0) { |sum, item| sum + item.total }
+    result = @items.reduce(0) { |sum, item| sum + item.total }
+    if Time.now.month == 4 and Time.now.day == 1
+      result = result * 0.1
+    end
+    return result
   end
 end
