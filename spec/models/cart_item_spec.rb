@@ -10,6 +10,6 @@ RSpec.describe CartItem, type: :model do
     3.times {cart.add_item(i1.id)}
     2.times {cart.add_item(i2.id)}
     #Assert
-    expect(cart.items.first.total).to be 151
+    expect(cart.items.first.total).to be 150
   end
 end
