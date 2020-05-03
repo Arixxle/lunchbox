@@ -21,16 +21,14 @@ RSpec.describe Cart, type: :model do
     end
     it "商品可以放到購物車裡，也可以再拿出來。" do
       cart = Cart.new
-      # cat1 = Category.create(name: '湯麵')
-      cat1 = FactoryBot.create(:category)
-      i1 = cat1.items.create(name: 'item1', price: 100)
-      i2 = cat1.items.create(name: 'item2', price: 80)
+      i1 = FactoryBot.create(:item)
+      i2 = FactoryBot.create(:item)
       #Act
       3.times {cart.add_item(i1.id)}#i1現在是items，所以有id這個方法(欄位)可以取用
       2.times {cart.add_item(i2.id)}
       #Assert
       expect(cart.items.first.item).to be_an Item 
-      expect(cart.items.first.item.price).to be 100
+      expect(cart.items.first.item.price).to be i1.price
     end
   end
   describe "進階功能" do
