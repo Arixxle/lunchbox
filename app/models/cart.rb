@@ -1,6 +1,6 @@
 class Cart
-  def initialize
-    @items = [] #要有一個可以裝東西的容器
+  def initialize(items = [])
+    @items = items #要有一個可以裝東西的容器
   end
   def add_item(item_id)
     found_item = @items.find { |item| item.item_id == item_id }
@@ -34,5 +34,18 @@ class Cart
       { "item_id" => item.item_id, "quantity" => item.quantity }
     }
     return {"items" => items}
+  end
+  def self.from_hash(hash = nil)
+    if hash && hash["items"]
+      items = []
+      hash["items"].each do |item|
+        #這裡的item是：{ "item_id" => 1, "quantity" => 3},因為前面是傳一個包著hash的陣列進來
+        items << CartItem.new(item["item_id"], item["quantity"])
+        #因為要還原成購物車，所以要把購物車中的購物項目先做出來
+      end
+      Cart.new(items)
+    else
+      Cart.new
+    end
   end
 end
