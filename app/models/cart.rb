@@ -16,4 +16,7 @@ class Cart
   def items
     @items #回傳購物車的陣列內容
   end
+  def total
+    @items.reduce(0) { |sum, item| sum + item.total }
+  end
 end
