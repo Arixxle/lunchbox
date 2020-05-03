@@ -21,7 +21,8 @@ RSpec.describe Cart, type: :model do
     end
     it "商品可以放到購物車裡，也可以再拿出來。" do
       cart = Cart.new
-      cat1 = Category.create(name: '湯麵')
+      # cat1 = Category.create(name: '湯麵')
+      cat1 = FactoryBot.create(:category)
       i1 = cat1.items.create(name: 'item1', price: 100)
       i2 = cat1.items.create(name: 'item2', price: 80)
       #Act
