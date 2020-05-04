@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     #寫法1
-    # @comment = Comment.new(comment_params)
+    @comment = Comment.new(comment_params)
     # @comment.item_id = params[:item_id]
     # @comment.user_id = current_user.id
     
