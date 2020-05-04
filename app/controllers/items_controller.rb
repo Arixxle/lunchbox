@@ -17,7 +17,7 @@ before_action :find_item, only: [:show, :edit, :update, :destroy]
   end
   def show
     @comment = Comment.new
-    @comments = @item.comments
+    @comments = @item.comments.includes(:user)
   end
   def edit
     
