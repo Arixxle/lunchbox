@@ -10,7 +10,7 @@ class UsersController < ApplicationController
                         password: user_params[:password])
     # 上面這段會拿輸入的mail password 去資料庫查找，有的話就會把資料庫資料放到user
     if user
-      session[:ccc9527] = user.email
+      session[:ccc9527] = user.id
       #如果有，就把使用者資料email存到session(登入)
       redirect_to root_path
     else

@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   post '/sign_up', to: "users#registration"
   
   #items
-  resources :items
+  resources :items do
+    resources :comments, only:[:create]
+  end
 end

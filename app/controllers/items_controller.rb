@@ -16,7 +16,7 @@ before_action :find_item, only: [:show, :edit, :update, :destroy]
     end
   end
   def show
-    
+    @comment = Comment.new
   end
   def edit
     

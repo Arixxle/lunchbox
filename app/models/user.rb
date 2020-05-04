@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   has_many :histories
   has_many :event, through: :histories
+  has_many :comments
 end

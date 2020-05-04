@@ -5,6 +5,8 @@ class Item < ApplicationRecord
                     
   belongs_to :category
   has_one_attached :cover
+  has_many :comments
+  
 
   # scope :available, -> { where(deleted_at: nil)}
   default_scope { where(deleted_at: nil) }
