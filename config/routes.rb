@@ -14,4 +14,16 @@ Rails.application.routes.draw do
   resources :items do
     resources :comments, only:[:create]
   end
+
+  #API
+  namespace :api do
+    namespace :v1 do
+      resources :items, only: [] do
+        member do 
+          post :favorite
+        end
+      end
+    end
+  end
+  
 end

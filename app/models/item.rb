@@ -7,6 +7,8 @@ class Item < ApplicationRecord
   has_one_attached :cover
   has_many :comments
   
+  has_many :favorite_items
+  has_many :users, through: :favorite_items
 
   # scope :available, -> { where(deleted_at: nil)}
   default_scope { where(deleted_at: nil) }
