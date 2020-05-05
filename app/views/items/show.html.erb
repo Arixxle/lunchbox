@@ -7,14 +7,20 @@
 <%= image_tag @item.cover.variant(resize_to_limit: [500, 500]) if @item.cover.attached? %>
 <h5>價格：$<%= @item.price %>元</h5>
 
-<h5>留言區</h5>
-<%= form_for(@comment, url: item_comments_path(@item), remote: true) do |form| %>
-<div class="form-group">
-  <%= form.text_area :content, class: 'form-control' %>
+<div data-controller="comment">
+  <h5>留言區</h5>
+  <%= form_for(@comment, url: item_comments_path(@item), remote: true) do |form| %>
+    <div class="form-group">
+      <%= form.text_area :content, 
+                         class: 'form-control',
+                         data: {target: 'comment.content',
+                         action: 'keyup->comment#check'} %>
+    </div>
+  <%= form.submit class: 'btn btn-outline-secondary', disabled: true, data: {target: 'comment.submit'}  %>
+  <% end %>
+  <hr>
 </div>
-  <%= form.submit class: 'btn btn-outline-secondary'%>
-<% end %>
-<hr>
+
 <div id="comments">
   <% @comments.each do |comment| %>
     <%= render 'comments/comment', comment: comment %>
