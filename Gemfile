@@ -37,6 +37,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 5.2'
   gem 'faker', '~> 2.11'
   gem 'timecop', '~> 0.9.1'
+  gem 'hirb-unicode', '~> 0.0.5'
 end
 
 group :development do
